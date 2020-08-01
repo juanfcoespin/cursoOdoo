@@ -12,4 +12,4 @@ class Vehicle(models.Model):
     active = fields.Boolean(string="Active", default=True)
     matricula= fields.Char("Placa")
     propietario = fields.Char("Dueño")
-    color = fields.Char("Color", default="git s")
+    color = fields.Char("Color", default="")
