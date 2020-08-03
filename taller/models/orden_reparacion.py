@@ -36,6 +36,7 @@ class OrdenReparacion(models.Model):
 
     class OrdenReparacionLinea(models.Model):
         _name = 'taller.orden.reparacion.linea'
+        _description = 'Gestion de lineas de reparacion'
 
         active = fields.Boolean(string="Active", default=True)
         vehicle_id = fields.Many2one("taller.vehiculo", string="Vehículo")

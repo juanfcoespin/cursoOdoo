@@ -12,7 +12,6 @@
                             <field name="active" widget="boolean_toggle"/>
                             <field name="name"/>
                             <field name="matricula"/>
-                            <field name="propietario"/>
                             <field name="color"/>
                         </group>
                     </sheet>
@@ -28,7 +27,7 @@
                     <field name="active"/>
                     <field name="name"/>
                     <field name="matricula"/>
-                    <field name="propietario"/>
+                    <field name="color"/>
                 </tree>
             </field>
         </record>
