@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <!-- Form -->
-        <record id="vehicle_view_form" model="ir.ui.view">
-            <field name="name">vehicle_view_form</field>
+        <record id="vehicle_form_view" model="ir.ui.view">
+            <field name="name">vehicle.form.view</field>
             <field name="model">taller.vehiculo</field>
             <field name="arch" type="xml">
                 <form string="Vehiculo Form">
@@ -20,8 +20,8 @@
             </field>
         </record>
         <!--Tree-->
-        <record id="vehicle_view_tree" model="ir.ui.view">
-            <field name="name">vehicle_view_tree</field>
+        <record id="vehicle_tree_view" model="ir.ui.view">
+            <field name="name">vehicle_tree_view</field>
             <field name="model">taller.vehiculo</field>
             <field name="arch" type="xml">
                 <tree string="Vehiculo Tree">
@@ -40,13 +40,12 @@
            <field name="view_mode">tree,form</field>
        </record>
         <!--Menus-->
-        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-        <menuitem id="menu_taller_root"
+        <menuitem id="menuitem_root"
                   name="Taller"
                   web_icon="taller,static/description/icon.png"
                   sequence="1"/>
-        <menuitem id="menu_taller_vehicle"
-                  parent="menu_taller_root"
+        <menuitem id="menuitem_vehicle"
+                  parent="menuitem_root"
                   action="vehicle_action"
                   name="Vehiculos"
                   sequence="2"/>
