@@ -19,7 +19,7 @@ class Vehicle(models.Model):
 
     @api.constrains('matricula')
     def _check_unique_matricula(self):
-        # comprobamos que se unica la matricula
+        # comprobamos que sea unica la matricula
         # el domain hace la funcion del where en la bdd para este caso que
         # cumpla las 2 condiciones
         domain = [
