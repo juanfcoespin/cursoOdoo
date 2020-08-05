@@ -7,10 +7,14 @@
             <field name="model">taller.orden.reparacion</field>
             <field name="arch" type="xml">
                 <form string="Orden Reparacion Form">
+                    <header>
+<!--                  con el type object, se ejecuta la función confirmation-->
+                        <button name="confirmation" string="Confirmar" type="object"/>
+                    </header>
                     <sheet>
                         <group>
                             <h2>
-                                <field name="name"/>
+                                <field name="name" readonly="1"/>
                             </h2>
                         </group>
                         <group>
@@ -22,13 +26,19 @@
                         <notebook>
                             <page string="Trabajos" name="raparacion_line_ids">
                                 <field name="raparacion_line_ids">
-                                    <tree>
+                                    <tree editable="bottom">
                                         <field name="vehicle_id"></field>
                                         <field name="descripcion" placeholder="Descripción del Trabajo a realizarce"></field>
+                                        <field name="precio_unitario" placeholder="Descripción del Trabajo a realizarce"></field>
+                                        <field name="cantidad" placeholder="Descripción del Trabajo a realizarce"></field>
+                                        <field name="subtotal"></field>
                                     </tree>
                                 </field>
                             </page>
                         </notebook>
+                        <group>
+                            <field name="notas"/>
+                        </group>
                     </sheet>
                 </form>
             </field>
