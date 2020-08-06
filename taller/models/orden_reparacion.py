@@ -13,9 +13,13 @@ class OrdenReparacion(models.Model):
         help="Introduce el nombre",
         default="OR_"
     )
-    state = fields.Selection(
-        ('borrador', 'Borrador')
-    )
+    state = fields.Selection([
+        ('draft', 'Nuevo'),
+        ('sent', 'Confirmado'),
+        ('done', 'Realizado'),
+        ('cancel', 'Cancelado')
+    ], string='Status', readonly=True, index=True, copy=False, default='draft',
+        tracking=True)
     partner_id = fields.Many2one("res.partner", string="Cliente")
     raparacion_line_ids = fields.One2many(
         comodel_name="taller.orden.reparacion.linea",
