@@ -13,13 +13,17 @@ class OrdenReparacion(models.Model):
         help="Introduce el nombre",
         default="OR_"
     )
+    '''
+    tracking es para guardar un registro de modificaciones del cambio
+    de los estados
+    '''
     state = fields.Selection([
-        ('draft', 'Nuevo'),
-        ('sent', 'Confirmado'),
-        ('done', 'Realizado'),
+        ('nuevo', 'Nuevo'),
+        ('confirmado', 'Confirmado'),
+        ('realizado', 'Realizado'),
         ('cancel', 'Cancelado')
-    ], string='Status', readonly=True, index=True, copy=False, default='draft',
-        tracking=True)
+    ], string='Estado', readonly=True, index=True, copy=False,
+         default='draft', tracking=True)
     partner_id = fields.Many2one("res.partner", string="Cliente")
     raparacion_line_ids = fields.One2many(
         comodel_name="taller.orden.reparacion.linea",

@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Orden Reparacion Form">
                     <header>
+                        <field name="state" widget="statusbar" statusbar_visible="nuevo,confirmado,realizado"/>
 <!--                  con el type object, se ejecuta la función confirmation-->
                         <button name="confirmation" string="Confirmar" type="object"/>
                     </header>
