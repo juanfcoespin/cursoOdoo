@@ -11,6 +11,7 @@ class Vehicle(models.Model):
     active = fields.Boolean(string="Active", default=True)
     matricula = fields.Char("Placa")
     color = fields.Char("Color", default="")
+    tag_ids = fields.Many2many(comodel_name="vehiculo.tag")
 
     _sql_constraints = [
         ('name_uniq', 'unique (name)',
@@ -29,3 +30,8 @@ class Vehicle(models.Model):
         vehiculos = self.search(domain)
         if vehiculos:
             raise exceptions.ValidationError("Matrícula Duplicada")
+
+class VehiculoTag(models.Model):
+    _name = "vehiculo.tag"
+    name = fields.Char("Tag")
+

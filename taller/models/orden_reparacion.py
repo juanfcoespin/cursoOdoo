@@ -20,11 +20,19 @@ class OrdenReparacion(models.Model):
     state = fields.Selection([
         ('nuevo', 'Nuevo'),
         ('confirmado', 'Confirmado'),
-        ('realizado', 'Realizado'),
-        ('cancel', 'Cancelado')
+        ('cancelado', 'Cancelado')
     ], string='Estado', readonly=True, index=True, copy=False,
-         default='draft', tracking=True)
+         default='nuevo', tracking=True)
     partner_id = fields.Many2one("res.partner", string="Cliente")
+    READONLY_STATES = {
+        'nuevo': [('readonly', False)],
+        'cancelado': [('readonly', False)],
+        'confirmado': [('readonly', True)]
+    }
+    # este campo solo se puede editar cuando el estado es nuevo o cancelado
+    company_id = fields.Many2one('res.company', 'Company', required=True, index=True,
+                                 states=READONLY_STATES,
+                                 default=lambda self: self.env.company.id)
     raparacion_line_ids = fields.One2many(
         comodel_name="taller.orden.reparacion.linea",
         inverse_name="reparacion_id",
@@ -45,8 +53,9 @@ class OrdenReparacion(models.Model):
         res = super(OrdenReparacion, self).create(vals)
         return res
 
-    def confirmation(self):
-        raise exceptions.UserError("No implementado")
+    def confirm(self):
+        self.write({'state': 'confirmado'})
+        # raise exceptions.UserError("No implementado")
 
 
 

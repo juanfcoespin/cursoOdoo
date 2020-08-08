@@ -8,9 +8,12 @@
             <field name="arch" type="xml">
                 <form string="Orden Reparacion Form">
                     <header>
-                        <field name="state" widget="statusbar" statusbar_visible="nuevo,confirmado,realizado"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="nuevo,confirmado,realizado,cancelado"/>
 <!--                  con el type object, se ejecuta la función confirmation-->
-                        <button name="confirmation" string="Confirmar" type="object"/>
+                        <button name="confirm" string="Confirmar" type="object"
+                            attrs="{'invisible': [('state', '=', 'confirmado')]}"/>
+                        <button name="cancel" string="Cancelar" type="object"/>
                     </header>
                     <sheet>
                         <group>
@@ -23,6 +26,7 @@
                         </group>
                         <group>
                             <field name="partner_id"/>
+                            <field name="company_id"/>
                         </group>
                         <notebook>
                             <page string="Trabajos" name="raparacion_line_ids">
