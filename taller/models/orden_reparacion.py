@@ -17,12 +17,19 @@ class OrdenReparacion(models.Model):
     tracking es para guardar un registro de modificaciones del cambio
     de los estados
     '''
-    state = fields.Selection([
-        ('nuevo', 'Nuevo'),
-        ('confirmado', 'Confirmado'),
-        ('cancelado', 'Cancelado')
-    ], string='Estado', readonly=True, index=True, copy=False,
-         default='nuevo', tracking=True)
+    state = fields.Selection(
+        [
+            ('nuevo', 'Nuevo'),
+            ('confirmado', 'Confirmado'),
+            ('cancelado', 'Cancelado')
+        ],
+        string='Estado',
+        readonly=True,
+        index=True,
+        copy=False,
+        default='nuevo',
+        tracking=True
+        )
     partner_id = fields.Many2one("res.partner", string="Cliente")
     READONLY_STATES = {
         'nuevo': [('readonly', False)],

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bom_import_wizard_form" model="ir.ui.view">
+            <field name="name">bom.import.wizard.form</field>
+            <field name="model">mrp.import.bom.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Import Bom Materials">
+                    <group>
+                        <field name="product_id"/>
+                        <field name="file_data"/>
+                    </group>
+                    <footer>
+                        <button name="import_bom" type="object" string="Importar"
+                                class="btn-primary"/>
+                        <!--special="cancel" cierre el pop up-->
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!--Aquí se crea la acción-->
+        <!-- binding_model: en donde queremos que aparezca el disparador del wizard  -->
+        <!-- binding_views: list => aplica para mas de un producto  -->
+        <!-- binding_views: form => aplica solo para un producto  -->
+        <!-- target: new  => para que salga el pop up-->
+        <!-- target: inline  => sale como una ventana normal-->
+        <!-- groups: Los usuarios que están autorizados a ver este wizard-->
+        <act_window
+            id="action_bom_import"
+            name="Importar Lista de Materiales"
+            res_model="mrp.import.bom.wizard"
+            binding_model="product.template"
+            binding_views="form"
+            view_mode="form"
+            target="new"
+            groups="base.group_user" />
+    </data>
+</odoo>
