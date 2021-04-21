@@ -13,7 +13,7 @@
 <!--                  con el type object, se ejecuta la función confirmation-->
                         <button name="confirm" string="Confirmar" type="object"
                             attrs="{'invisible': [('state', '=', 'confirmado')]}"/>
-                        <button name="cancel" string="Cancelar" type="object"/>
+                        <!--button name="cancel" string="Cancelar" type="object"/-->
                     </header>
                     <sheet>
                         <group>
